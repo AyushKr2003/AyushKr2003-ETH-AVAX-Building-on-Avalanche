@@ -169,12 +169,12 @@ Approved spenders can burn tokens from another address using the `burnFrom` func
 burnFrom(address _from, uint256 _value);
 ```
 ### Viewing Items and Balance
-To view the list of redeemable items, use the showItems function:
+To view the list of redeemable items, use the `showItems` function:
 
 ```solidity
 showItems();
 ```
-To check your token balance, use the getBalance function:
+To check your token balance, use the `getBalance` function:
 
 ```solidity
 getBalance();
