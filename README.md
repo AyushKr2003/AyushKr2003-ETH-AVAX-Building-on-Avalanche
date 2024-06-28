@@ -146,13 +146,13 @@ The contract is deployed on the Avalanche Fuji Testnet. Make sure you have a com
 
 ## Usage
 ### Minting Tokens
-Only the contract owner can mint tokens. Use the mint function:
+Only the contract owner can mint tokens. Use the `mint` function:
 
 ```solidity
 mint(address to, uint256 amount);
 ```
 ### Redeeming Tokens
-Users can redeem tokens for items using the RedeemToken function:
+Users can redeem tokens for items using the `RedeemToken` function:
 
 ```solidity
 RedeemToken(uint choice);
