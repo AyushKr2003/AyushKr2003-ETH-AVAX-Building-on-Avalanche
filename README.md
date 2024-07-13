@@ -52,17 +52,20 @@ Overrides the default decimals to 0, making each token indivisible.
 ### RedeemToken
 ```solidity
 function RedeemToken(uint choice) public {
-    require(choice<=3 || choice>0, "Choose an item from the list");
-    if(choice==1){
-        _burn(msg.sender, 10);
+        require(choice<=3 || choice>0, "Choose an item from the list");
+        if(choice==1){
+            _burn(msg.sender, 10);
+            nftBalance[msg.sender] += 1;
+        }
+        else if(choice==2){
+            _burn(msg.sender, 50);
+            tshirtBalance[msg.sender] += 1;
+        }
+        else if(choice==3){
+            _burn(msg.sender, 100);
+            chestBalance[msg.sender] += 1;
+        }
     }
-    else if(choice==2){
-        _burn(msg.sender, 50);
-    }
-    else if(choice==3){
-        _burn(msg.sender, 100);
-    }
-}
 ```
 Allows users to redeem tokens for items. The number of tokens burned depends on the selected item:
 
