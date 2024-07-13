@@ -7,6 +7,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract DegenToken is ERC20, Ownable {
     string items = "1.DEGEN NFT  2.DEGEN T-shirt 3.DEGEN Treasure Chest";
 
+    mapping(address => uint) public nftBalance;
+    mapping(address => uint) public tshirtBalance;
+    mapping(address => uint) public chestBalance;
+
     constructor() ERC20("Degen", "DGN"){}
 
     function mint(address to, uint256 amount) public onlyOwner {
@@ -21,12 +25,15 @@ contract DegenToken is ERC20, Ownable {
         require(choice<=3 || choice>0, "Choose an item from the list");
         if(choice==1){
             _burn(msg.sender, 10);
+            nftBalance[msg.sender] += 1;
         }
         else if(choice==2){
             _burn(msg.sender, 50);
+            tshirtBalance[msg.sender] += 1;
         }
         else if(choice==3){
             _burn(msg.sender, 100);
+            chestBalance[msg.sender] += 1;
         }
     }
 
