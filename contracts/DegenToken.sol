@@ -22,19 +22,23 @@ contract DegenToken is ERC20, Ownable {
     }
 
     function RedeemToken(uint choice) public {
-        require(choice<=3 || choice>0, "Choose an item from the list");
-        if(choice==1){
-            _burn(msg.sender, 10);
-            nftBalance[msg.sender] += 1;
+    require(choice >= 1 && choice <= 3, "Invalid choice. Choose an item from the list");
+
+    if (choice == 1) {
+        require(balanceOf(msg.sender) >= 10, "Insufficient balance to redeem NFT");
+        _burn(msg.sender, 10);
+        nftBalance[msg.sender] += 1;  
         }
-        else if(choice==2){
-            _burn(msg.sender, 50);
-            tshirtBalance[msg.sender] += 1;
-        }
-        else if(choice==3){
-            _burn(msg.sender, 100);
-            chestBalance[msg.sender] += 1;
-        }
+    else if (choice == 2) {
+        require(balanceOf(msg.sender) >= 50, "Insufficient balance to redeem T-shirt");
+        _burn(msg.sender, 50);
+        tshirtBalance[msg.sender] += 1;  
+    }
+    else if (choice == 3) {
+        require(balanceOf(msg.sender) >= 100, "Insufficient balance to redeem Treasure Chest");
+        _burn(msg.sender, 100);
+        chestBalance[msg.sender] += 1;  
+    }
     }
 
     function burn(uint _value) public {
